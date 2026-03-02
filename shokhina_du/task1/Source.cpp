@@ -23,7 +23,7 @@ private:
     static constexpr double METERS_TO_YARD = 1.09361;               // 1 ярд = 0.9144 м
     static constexpr double METERS_TO_MILE = 0.000621371;           // 1 миля = 1609.344 м
     static constexpr double METERS_TO_NAUTICAL_MILE = 0.000539957;  // 1 морская миля = 1852 м
-    static constexpr double METERS_TO_LEAGUE = 0.000207124;         // 1 лига = 4,828 км
+    static constexpr double METERS_TO_LEAGUE = 0.000207125;         // 1 лига = 4828 м
     static constexpr double METERS_TO_VERSTA = 0.000937383;         // 1 верста = 1066.8 м
     static constexpr double METERS_TO_SAGENE = 0.468691;            // 1 сажень = 2.1336 м
     static constexpr double METERS_TO_ARSHIN = 1.40607;             // 1 аршин = 0.7112 м
@@ -37,13 +37,13 @@ public:
     // единицы измерения
     void initializeUnits() {
         units = {
-            {"Метры", "м", 1.0},
+            {"Метры", "m", 1.0},
             {"Дюймы", "in", METERS_TO_INCH},
             {"Футы", "ft", METERS_TO_FOOT},
             {"Ярды", "yd", METERS_TO_YARD},
             {"Мили", "mi", METERS_TO_MILE},
             {"Морские мили", "nmi", METERS_TO_NAUTICAL_MILE},
-            {"Лиги (морские)", "lea", METERS_TO_LEAGUE},
+            {"Лиги", "lea", METERS_TO_LEAGUE},
             {"Версты", "verst", METERS_TO_VERSTA},
             {"Сажени", "sag", METERS_TO_SAGENE},
             {"Аршины", "arsh", METERS_TO_ARSHIN},
@@ -60,7 +60,6 @@ public:
             meters = 0;
         }
         cout << "------------------------------------------\n";
-        clearInputBuffer();
     }
 
     // перевод в другие единицы измерения
@@ -88,7 +87,6 @@ public:
             cout << "Неверный выбор.\n";
         }
         cout << "------------------------------------------\n";
-        clearInputBuffer();
     }
 
     void displayInMeters() const {
@@ -148,12 +146,6 @@ public:
         cout << "Выберите действие (1-6): ";
     }
 
-    // очистка буфера ввода
-    void clearInputBuffer() {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-
     // запуск
     void run() {
         int choice;
@@ -182,11 +174,9 @@ public:
                 displayInAllUnits();
                 break;
             case 6:
-                cout << "Программа завершена.\n";
                 break;
             default:
                 cout << "Неверный выбор. Пожалуйста, выберите 1-6.\n";
-                clearInputBuffer();
             }
         } while (choice != 6);
     }
