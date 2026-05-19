@@ -12,7 +12,7 @@ public:
     DynamicArray() : data(nullptr), size(0) {}
 
     // конструктор с заданным размером
-    explicit DynamicArray(size_t n) : size(n) {
+    DynamicArray(size_t n) : size(n) {
         if (n > 0) {
             data = new double[n]();
         } 
@@ -33,7 +33,6 @@ public:
                 newData[i] = data[i];
             }
         }
-        
         delete[] data;
         data = newData;
         size = newSize;
