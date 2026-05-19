@@ -51,48 +51,6 @@ public:
                 hasValue[d][h] = false;
     }
 
-    // конструктор с указанием года
-    Thermometer(int year) : startYear(year), startMonth(1), startDay(1), startHour(0) {
-        checkYear(year);
-        for (int d = 0; d < 365; ++d)
-            for (int h = 0; h < HOURS_IN_DAY; ++h)
-                hasValue[d][h] = false;
-    }
-
-    // конструктор копирования
-    Thermometer(const Thermometer& other) {
-        startYear = other.startYear;
-        startMonth = other.startMonth;
-        startDay = other.startDay;
-        startHour = other.startHour;
-        for (int d = 0; d < 365; ++d) {
-            for (int h = 0; h < HOURS_IN_DAY; ++h) {
-                hasValue[d][h] = other.hasValue[d][h];
-                temperatures[d][h] = other.temperatures[d][h];
-            }
-        }
-    }
-
-    // оператор присваивания
-    Thermometer& operator=(const Thermometer& other) {
-        if (this != &other) {
-            startYear = other.startYear;
-            startMonth = other.startMonth;
-            startDay = other.startDay;
-            startHour = other.startHour;
-            for (int d = 0; d < 365; ++d) {
-                for (int h = 0; h < HOURS_IN_DAY; ++h) {
-                    hasValue[d][h] = other.hasValue[d][h];
-                    temperatures[d][h] = other.temperatures[d][h];
-                }
-            }
-        }
-        return *this;
-    }
-
-    // деструктор
-    ~Thermometer() {}
-
     // 1) установить начальные дату и время наблюдений
     void setStartDateTime(int year, int month, int day, int hour) {
         checkYear(year);
